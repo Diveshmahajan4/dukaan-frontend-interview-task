@@ -1,29 +1,29 @@
 import OrderList from '@/components/OrderList'
-import {  ArrowDown, ArrowDownToLine, ArrowUpDown, BadgePercent, BarChartBig, ChevronDown, ClipboardList, CreditCard, HelpCircle, HomeIcon, Info, LayoutGrid, MousePointer2, Palette, Search, Truck, Users, Volume2, Zap } from 'lucide-react'
+import {  ArrowDown, ArrowDownToLine, ArrowUpDown, BadgePercent, BarChartBig, ChevronDown, ChevronLeft, ChevronRight, ClipboardList, CreditCard, HelpCircle, HomeIcon, Info, LayoutGrid, MousePointer2, Palette, Search, Truck, Users, Volume2, Wallet, Zap } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Home() {
   const ordersToRender = [];
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       ordersToRender.push(<OrderList key={i} />);
     }
 
   return (
     <div className='grid grid-cols-6 bg-white '>
-      <div className='bg-[#353C53] h-100 px-2.5 py-4 text-white'>
+      <div className='bg-[#353C53] h-100 px-2.5 py-4 text-white relative'>
           {/* Logo and Name */}
           <div className='flex gap-3'>
             <div>
-              <Image src='/logo.png' alt='Nishyan' className='rounded-md' width={43} height={43}/>
+              <Image src='/logo.png' alt='Nishyan' className='rounded-md' width={50} height={50}/>
             </div>
             <div className='flex flex-col gap-1 justify-start items-start w-2/3'>
               <p className='text-[15px]'>
                 Nishyan</p>
               <p className='text-[13px] underline underline-offset-2'>Visit Store</p>
             </div>
-            <div>
-              <ChevronDown className='h-5 w-5 font-bold'/>
+            <div className='flex items-center'>
+              <ChevronDown className='h-7 w-7 font-bold'/>
             </div>
           </div>
 
@@ -80,9 +80,17 @@ export default function Home() {
               
           </div>
 
-          {/*  */}
-          <div>
-            
+          {/* Available Credits */}
+          <div className='absolute bottom-2 flex items-center mb-2 w-[90%]'>
+            <div className='flex px-3 py-2 bg-[#465071] rounded-md w-full'>
+              <div className='p-2 bg-[#5a658c] rounded-md'>
+                <Wallet className='w-6 h-6'/>
+              </div>
+              <div className='pl-3 w-full'>
+                <p className='text-[13px]'>Available Credits</p>
+                <p className='text-[16px]'>222.10</p>
+              </div>
+            </div>
           </div>
       </div>
 
@@ -114,7 +122,7 @@ export default function Home() {
           <div>
             {/* Overview Layer */}
             <div className='flex justify-between'>
-              <p className='text-[20px]'>Overview</p>
+              <p className='text-[20px] text-semibold'>Overview</p>
               <div className='px-2 py-1 rounded-sm flex border border-gray-300 items-center'>
                 <p className='text-[15px] text-[#4D4D4D]'>Last Month</p>
                 <ChevronDown className='text-gray-400 h-5 w-5'/>
@@ -177,7 +185,35 @@ export default function Home() {
                     </div>
 
                     {/* Orders List */}
-                    {ordersToRender}
+                    <div>
+                      {ordersToRender}
+                    </div>
+
+                    {/* Pagination */}
+                    <div className='mt-1 flex items-center justify-center gap-6'>
+                        {/* Previous Icon*/}
+                        <div className='flex flex-start items-center py-2 px-3 border border-gray-200 hover:bg-blue-500 hover:text-white rounded-md'>
+                          <ChevronLeft className=' w-5 h-5 pr-1'/>
+                          <p className='text-[14px] '>Previous</p>
+                        </div>
+                        <div className='flex gap-1'>
+                            <div className='py-2 px-4 hover:bg-blue-500 hover:text-white rounded-md'><p>1</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>...</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>10</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>11</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>12</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>13</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>14</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>15</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>16</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>17</p></div>
+                            <div className='py-2 px-3 hover:bg-blue-500 hover:text-white rounded-md'><p>18</p></div>
+                        </div>
+                        <div className='flex flex-start items-center py-2 px-3 border border-gray-200 hover:bg-blue-500 hover:text-white rounded-md '>
+                          <p className='text-[14px] '>Next</p>
+                          <ChevronRight className='w-5 h-5 pl-1'/>
+                        </div>
+                    </div>
                 </div>
             </div>
           </div>
